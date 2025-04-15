@@ -4,7 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import { useEffect } from "react";
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 
 function Router() {
   return (
@@ -22,13 +22,8 @@ function App() {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
+      wheelMultiplier: 1,
       touchMultiplier: 2,
-      infinite: false,
     });
 
     function raf(time: number) {
