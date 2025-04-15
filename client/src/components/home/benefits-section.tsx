@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { images } from "@/lib/images";
 
 export function BenefitsSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -78,7 +79,7 @@ export function BenefitsSection() {
           >
             <div className="h-48 overflow-hidden">
               <motion.img 
-                src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                src={images.benefits.farmers}
                 alt="Farmers Benefits" 
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.1 }}
@@ -124,7 +125,7 @@ export function BenefitsSection() {
           >
             <div className="h-48 overflow-hidden">
               <motion.img 
-                src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                src={images.benefits.companies}
                 alt="Companies Benefits" 
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.1 }}
@@ -168,7 +169,7 @@ export function BenefitsSection() {
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/3 mb-8 md:mb-0 flex justify-center">
               <motion.img 
-                src="https://images.unsplash.com/photo-1497435571905-a08c04f8f5e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                src={images.benefits.environment}
                 alt="Environmental Impact" 
                 className="w-64 h-64 object-cover rounded-full border-8 border-white shadow-xl"
                 initial={{ scale: 0.8, rotate: -5 }}
@@ -248,19 +249,15 @@ export function BenefitsSection() {
                 key={index}
                 className="bg-white rounded-xl shadow-lg p-8 text-center"
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={isStatsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  y: -10,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
-                }}
               >
-                <div className="text-primary text-4xl mb-4">
-                  <i className={`fas ${stat.icon}`}></i>
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i className={`fas ${stat.icon} text-2xl text-primary`}></i>
                 </div>
                 <AnimatedCounter 
                   target={stat.value} 
+                  className="text-3xl font-bold text-brown mb-2"
                   delay={0.5 + (index * 0.2)}
                   duration={2}
                 />

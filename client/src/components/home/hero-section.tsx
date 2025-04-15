@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ParticleContainer } from "@/components/ui/particle-container";
+import { images } from "@/lib/images";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -19,12 +20,6 @@ export function HeroSection() {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  // Image URLs for hero section
-  const imageUrls = {
-    pellets: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    farming: "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   };
 
   return (
@@ -115,7 +110,7 @@ export function HeroSection() {
           >
             <div className="relative w-full h-[400px] md:h-[500px]">
               <motion.img 
-                src={imageUrls.pellets}
+                src={images.hero.pellets}
                 alt="Biomass Pellets" 
                 className="absolute w-64 h-64 object-cover rounded-2xl shadow-2xl top-0 left-0 z-10"
                 initial={{ opacity: 0, y: 50, rotate: -5 }}
@@ -125,7 +120,7 @@ export function HeroSection() {
               />
               
               <motion.img 
-                src={imageUrls.farming}
+                src={images.hero.farming}
                 alt="Sustainable Farming" 
                 className="absolute w-64 h-64 object-cover rounded-2xl shadow-2xl bottom-0 right-0 z-20"
                 initial={{ opacity: 0, y: 50, rotate: 5 }}
