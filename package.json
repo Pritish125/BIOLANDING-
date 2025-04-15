@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx server/index.ts",
-    "build": "rm -rf dist && npm install && vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist && mv dist/public/* dist/ && rm -rf dist/public && ls -la dist/",
+    "build": "rm -rf dist && npm install && vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist && mkdir -p dist && cp -r dist/public/* dist/ && rm -rf dist/public && ls -la dist/",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "check": "tsc",
     "db:push": "drizzle-kit push"
